@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PostingBot</title>
+</head>
+
+<style>
+    .container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+form {
+    padding-bottom: 20px;
+}
+form textarea{
+     width: 300px;
+     height: 100px;
+<!--     max-width: 100px;-->
+}
+</style>
+
+
+<div class="container">
+    <header>
+        <center>
+            <h1>Multi-Sub Posting Bot</h1>
+            <p>
+                <!--            <small> Download any album from <a href="http://freeallmusic.top"> freeallmusic.top</a></small>-->
+            </p>
+        </center>
+        <div>
+            <form method="post" action="{{ url_for('divide') }}">
+                {{ form.hidden_tag() }}
+                {{ form.url.label }} {{ form.url() }}
+                <p>
+                    {{ form.subreddits.label }}
+                    <input type="checkbox" onClick="toggle(this)"/> Toggle All<br/>
+                    {{ form.subreddits() }}
+                </p>
+                {{form.othersubs.label}}
+                <p>
+                    {{form.othersubs(placeholder="subs names (no 'r/') separated by newlines")}}
+                </p>
+
+                <input type="submit" value="Submit"/>
+            </form>
+        </div>
+
+
+    </header>
+</div>
+<script language="JavaScript">
+function toggle(source) {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i] != source)
+            checkboxes[i].checked = source.checked;
+    }
+}
+
+
+
+</script>
+</html>
