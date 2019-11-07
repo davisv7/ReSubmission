@@ -36,6 +36,7 @@ def index():
         url = form.url.data
         subreddits = form.subreddits.data
         othersubs = list(filter(lambda x: len(x) != 0, form.othersubs.data.split('\r\n')))
+        # ^ removes newline characters and empty lines
         subreddits += othersubs
         print(url, subreddits, flush=True)
         print(f'Posting will complete @ {get_time((len(subreddits) - 1) * 11)}', flush=True)

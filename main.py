@@ -28,9 +28,8 @@ def get_title(url):
 
 
 def post_to_subs(url, subreddits):
-    # submits a test post to reddit_api_test
-    # title = get_title(url)
-    title = "PENULTIMATE TEST"
+    # submits a link post (url) to all subs in subreddits list
+    title = get_title(url)
     for i in range(len(subreddits)):
         sub = subreddits[i]
         subreddit = reddit.subreddit(sub)
@@ -39,10 +38,9 @@ def post_to_subs(url, subreddits):
             # selftext='',
             url=url
         )
-        if i != len(subreddits) - 1:
+        if i != len(subreddits) - 1:  # we don't want to wait 10 minutes after the last post is complete
             time.sleep(600 + randint(10, 60))
         print(f'Posted article {title}, to {sub}', flush=True)
-    # print(url, title, subreddit, flush=True)
     print('Posting complete.', flush=True)
     print(f'Please wait until after {get_time(10)} before posting again.', flush=True)
 
