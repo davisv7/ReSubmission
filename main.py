@@ -6,7 +6,7 @@ import unicodedata
 import datetime
 from random import randint
 
-with open('config.txt', 'r') as fileobj:
+with open('config.txt', 'r') as fileobj:  # pulls account info out of config file
     client_id, client_secret, user_agent, username, password = [line.strip('\r\n') for line in fileobj.readlines()]
 
 reddit = praw.Reddit(
@@ -35,7 +35,6 @@ def post_to_subs(url, subreddits):
         subreddit = reddit.subreddit(sub)
         subreddit.submit(
             title=title,
-            # selftext='',
             url=url
         )
         if i != len(subreddits) - 1:  # we don't want to wait 10 minutes after the last post is complete
