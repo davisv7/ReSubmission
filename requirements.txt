@@ -1,0 +1,6 @@
+requests==2.22.0
+beautifulsoup4==4.8.1
+Flask==1.1.1
+flask_wtf==0.14.2
+praw==6.4.0
+WTForms==2.2.1

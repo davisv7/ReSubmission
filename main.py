@@ -32,14 +32,19 @@ def post_to_subs(url, subreddits):
     title = get_title(url)
     for i in range(len(subreddits)):
         sub = subreddits[i]
-        subreddit = reddit.subreddit(sub)
-        subreddit.submit(
-            title=title,
-            url=url
-        )
-        if i != len(subreddits) - 1:  # we don't want to wait 10 minutes after the last post is complete
-            time.sleep(600 + randint(10, 60))
-        print(f'Posted article {title}, to {sub}', flush=True)
+        try:
+            subreddit = reddit.subreddit(sub)
+            subreddit.submit(
+                title=title,
+                url=url
+            )
+            if i != len(subreddits) - 1:  # we don't want to wait 10 minutes after the last post is complete
+                time.sleep(600 + randint(10, 60))
+            print(f'Posted article {title}, to {sub}', flush=True)
+        except Exception as e:
+            print(f'Error posting {title} to {sub}')
+            print(e, flush=True)
+
     print('Posting complete.', flush=True)
     print(f'Please wait until after {get_time(10)} before posting again.', flush=True)
 
