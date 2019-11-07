@@ -18,7 +18,7 @@ class MultiCheckboxField(SelectMultipleField):
 
 
 @app.route('/', methods=['GET', 'POST'])
-def divide():
+def index():
     class FormProject(FlaskForm):
         url = StringField(
             label="Article URL:",
@@ -39,7 +39,7 @@ def divide():
         subreddits += othersubs
         print(url, subreddits, flush=True)
         print(f'Posting will complete @ {get_time((len(subreddits) - 1) * 11)}', flush=True)
-        post_to_test(url, subreddits)
+        post_to_subs(url, subreddits)
 
         return render_template('base.html', form=form)
     else:

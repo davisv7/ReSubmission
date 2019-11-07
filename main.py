@@ -27,7 +27,7 @@ def get_title(url):
         return title
 
 
-def post_to_test(url, subreddits):
+def post_to_subs(url, subreddits):
     # submits a test post to reddit_api_test
     # title = get_title(url)
     title = "PENULTIMATE TEST"

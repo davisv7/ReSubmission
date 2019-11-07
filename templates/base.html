@@ -33,7 +33,7 @@ form textarea{
             </p>
         </center>
         <div>
-            <form method="post" action="{{ url_for('divide') }}">
+            <form method="post" action="{{ url_for('index') }}">
                 {{ form.hidden_tag() }}
                 {{ form.url.label }} {{ form.url() }}
                 <p>
